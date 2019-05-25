@@ -1,0 +1,30 @@
+h1 {
+  text-align: center;
+}
+
+#grid {
+  width: calc(30vw + 22px);
+  height: calc(30vw + 22px);
+  margin: 50px auto;
+  border: 2px solid black;
+}
+
+.cell {
+  width: 3vw;
+  height: 3vw;
+  border: 1px solid lightblue;
+  background-color: blue;
+  float: left;
+}
+
+.cell:hover {
+  cursor: pointer;
+}
+
+.off {
+  background-color: blue;
+}
+
+.on {
+  background-color: yellow;
+}

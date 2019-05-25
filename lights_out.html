@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/lights_out.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lights Out</title>
+</head>
+<body>
+
+  <!-- container for our Lights Out game -->
+  <!-- used by Vue.js -->
+  <div id="logame">
+    <h1>{{ title }}</h1>
+
+    <!-- provide a container for our game grid -->
+    <div id="grid">
+      <locell v-for = "(num, key, index) in 100"
+              :id = "'cell' + key"
+              @select = "selectCell"
+              :class="{off: !grid.arr[key], on: grid.arr[key]}">
+      </locell>
+    </div>
+
+    <br><br><br>
+
+    <pre>
+      {{ $data }}
+    </pre>
+
+
+  </div>  <!-- end of Vue.js app -->
+
+  <!-- grid cell template -->
+  <template id="cell">
+    <div class="cell"
+         @click="process">
+    </div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/game_logic.js"></script>
+  <script src="js/lights_out.js"></script>
+
+</body>
+</html>
