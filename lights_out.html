@@ -1,7 +1,16 @@
+<!--            Author: Richard Myatt
+                Date: 26 May 2019
+
+                An implementation of the Lights Out game - please see
+                https://en.wikipedia.org/wiki/Lights_Out_(game)
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <link rel="stylesheet" href="css/lights_out.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,25 +21,41 @@
   <!-- container for our Lights Out game -->
   <!-- used by Vue.js -->
   <div id="logame">
-    <h1>{{ title }}</h1>
+
+    <!-- title bar component -->
+    <titlebar @reset = "reset"
+              :title="title">
+    </titlebar>
 
     <!-- provide a container for our game grid -->
     <div id="grid">
+
+      <!-- a grid of cell components -->
       <locell v-for = "(num, key, index) in 100"
               :id = "'cell' + key"
               @select = "selectCell"
               :class="{off: !grid.arr[key], on: grid.arr[key]}">
       </locell>
+
     </div>
 
-    <br><br><br>
-
-    <pre>
-      {{ $data }}
-    </pre>
-
-
   </div>  <!-- end of Vue.js app -->
+
+
+  <!--                          TEMPLATES                             -->
+
+  <!-- title bar template -->
+  <template id="tbar">
+    <nav>
+    <div class="nav-wrapper blue-grey lighten-2">
+      <a href="#" class="brand-logo left">{{ title }}</a>
+      <ul class="right">
+        <li><a href="#"><i class="material-icons" @click="refresh">refresh</i></a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Lights_Out_(game)" target="_blank"><i class="material-icons">info_outline</i></a></li>
+      </ul>
+    </div>
+  </nav>
+  </template>
 
   <!-- grid cell template -->
   <template id="cell">
@@ -38,6 +63,9 @@
          @click="process">
     </div>
   </template>
+
+
+  <!--                          SCRIPTS                               -->
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="js/game_logic.js"></script>

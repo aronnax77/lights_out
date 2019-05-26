@@ -1,18 +1,37 @@
+/*              Author: Richard Myatt
+                Date: 26 May 2019
+
+                An implementation of the Lights Out game - please see
+                https://en.wikipedia.org/wiki/Lights_Out_(game)
+*/
+
+body {
+  background-color: lightyellow;
+}
+
 h1 {
   text-align: center;
 }
 
+.brand-logo {
+  margin-left: 20px;
+}
+
 #grid {
-  width: calc(30vw + 22px);
-  height: calc(30vw + 22px);
-  margin: 50px auto;
-  border: 2px solid black;
+  width: calc(30vw + 5px);
+  height: calc(30vw + 5px);
+  background-color: #ccc;
+  margin: 100px auto;
+  border: 2px solid #ccc;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.4) inset,
+                      5px 5px 10px rgba(0, 0, 0, 0.1) inset,
+                      5px 5px 20px rgba(0, 0, 0, 0.7);
 }
 
 .cell {
   width: 3vw;
   height: 3vw;
-  border: 1px solid lightblue;
+  border: 1px solid #ccc;
   background-color: blue;
   float: left;
 }
@@ -27,4 +46,34 @@ h1 {
 
 .on {
   background-color: yellow;
+}
+
+@media only screen and (max-width: 1400px) {
+
+  #grid {
+    width: calc(40vw + 5px);
+    height: calc(40vw + 5px);
+    margin: 50px auto;
+  }
+
+  .cell {
+    width: 4vw;
+    height: 4vw;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+  #grid {
+    width: calc(90vw + 5px);
+    height: calc(90vw + 5px);
+    margin: 20px auto;
+  }
+
+  .cell {
+    width: 9vw;
+    height: 9vw;
+  }
+
 }

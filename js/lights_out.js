@@ -1,3 +1,21 @@
+/*              Author: Richard Myatt
+                Date: 26 May 2019
+
+                An implementation of the Lights Out game - please see
+                https://en.wikipedia.org/wiki/Lights_Out_(game)
+*/
+
+// title component
+var Title = {
+  template: "#tbar",
+  props: ["title"],
+  methods: {
+    refresh: function(e) {
+      this.$emit('reset');
+    }
+  }
+};
+
 // cell component
 var Cell = {
   template: "#cell",
@@ -15,7 +33,7 @@ var Cell = {
 var vm = new Vue ({
   el: "#logame",
   data: {
-    title: "Lights Out Game",
+    title: "Lights Out",
     rows: 10,
     cols: 10,
     grid: {},
@@ -23,7 +41,8 @@ var vm = new Vue ({
     j: 1
   },
   components: {
-    locell: Cell
+    locell: Cell,
+    titlebar: Title
   },
   methods: {
     selectCell: function(i) {
@@ -31,6 +50,9 @@ var vm = new Vue ({
       this.i = currentPosition[0];
       this.j = currentPosition[1];
       toggleNeighboursOfCell(this.i, this.j);
+    },
+    reset: function() {
+      this.grid.arr  = Array(this.rows * this.cols).fill(false);
     }
   },
   // initialize the app

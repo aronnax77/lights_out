@@ -1,3 +1,10 @@
+/*              Author: Richard Myatt
+                Date: 26 May 2019
+
+                An implementation of the Lights Out game - please see
+                https://en.wikipedia.org/wiki/Lights_Out_(game)
+*/
+
 // Constructor function for two dimensional grid to hold the cells for the game
 function Grid(rows, cols) {
   this.rows = rows;
@@ -22,11 +29,4 @@ Grid.prototype.posToIndex = function(pos) {
   var c = pos[1];
   var index = (r - 1) * this.cols + c - 1;
   return index;
-};
-
-// toggle the on/off status of the cells neighbours
-Grid.prototype.toggleNeighboursOfCell = function(pos) {
-  if(pos[0] > 1) {
-    
-  }
 };
